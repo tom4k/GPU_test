@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.conda/
+
+# PyTorch / ML trained weights and generated artifacts
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.bin
+
+# Logs & System metadata
+*.log
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.gemini/
