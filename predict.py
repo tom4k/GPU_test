@@ -19,12 +19,19 @@ def get_device():
         return torch.device('cpu')
 
 def predict():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    default_csv = os.path.join(base_dir, 'data', 'Testing_set.csv')
+    default_img_dir = os.path.join(base_dir, 'data', 'test')
+    default_mapping = os.path.join(base_dir, 'label_mapping.json')
+    default_model = os.path.join(base_dir, 'best_model.pth')
+    default_output = os.path.join(base_dir, 'submission.csv')
+
     parser = argparse.ArgumentParser(description="Generate Predictions for Image Dataset")
-    parser.add_argument('--csv_path', type=str, default='data/Testing_set.csv', help='Path to test CSV file')
-    parser.add_argument('--img_dir', type=str, default='data/test', help='Path to test images directory')
-    parser.add_argument('--mapping_path', type=str, default='label_mapping.json', help='Path to label mapping JSON file')
-    parser.add_argument('--model_path', type=str, default='best_model.pth', help='Path to trained model checkpoint')
-    parser.add_argument('--output_path', type=str, default='submission.csv', help='Path to save output predictions')
+    parser.add_argument('--csv_path', type=str, default=default_csv, help='Path to test CSV file')
+    parser.add_argument('--img_dir', type=str, default=default_img_dir, help='Path to test images directory')
+    parser.add_argument('--mapping_path', type=str, default=default_mapping, help='Path to label mapping JSON file')
+    parser.add_argument('--model_path', type=str, default=default_model, help='Path to trained model checkpoint')
+    parser.add_argument('--output_path', type=str, default=default_output, help='Path to save output predictions')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size for dataloader')
     args = parser.parse_args()
 

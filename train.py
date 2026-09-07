@@ -72,13 +72,18 @@ def validate_epoch(model, dataloader, criterion, device):
     return epoch_loss, epoch_acc
 
 def main():
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    default_csv = os.path.join(base_dir, 'data', 'Training_set.csv')
+    default_img_dir = os.path.join(base_dir, 'data', 'train')
+    default_save_path = os.path.join(base_dir, 'best_model.pth')
+
     parser = argparse.ArgumentParser(description="Train Image Classification Model (ResNet-18)")
-    parser.add_argument('--csv_path', type=str, default='data/Training_set.csv', help='Path to training CSV file')
-    parser.add_argument('--img_dir', type=str, default='data/train', help='Path to training images directory')
+    parser.add_argument('--csv_path', type=str, default=default_csv, help='Path to training CSV file')
+    parser.add_argument('--img_dir', type=str, default=default_img_dir, help='Path to training images directory')
     parser.add_argument('--epochs', type=int, default=5, help='Number of training epochs')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size for dataloaders')
     parser.add_argument('--lr', type=float, default=1e-3, help='Learning rate')
-    parser.add_argument('--save_path', type=str, default='best_model.pth', help='Path to save best model checkpoint')
+    parser.add_argument('--save_path', type=str, default=default_save_path, help='Path to save best model checkpoint')
     args = parser.parse_args()
 
     device = get_device()
